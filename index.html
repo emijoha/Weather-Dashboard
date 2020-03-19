@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="CSS/normalize.css">
     <link rel="stylesheet" href="CSS/skeleton.css">
     <link rel="stylesheet" type="text/css" href="CSS/custom.css">
+    <!-- font and icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -17,7 +19,7 @@
         <div class="container">
             <div class="row">
                 <div class="twelve columns">
-                    <h1>Weather Dashboard</h1>
+                    <h2>Weather Dashboard</h2>
                 </div>
             </div>
         </div>
@@ -29,21 +31,27 @@
             <div class="four columns city-sidebar">
                 <form>
                     <label for="cityInput">Search by City:</label>
-                    <input id="cityInput" class="u-full-width" type="city" placeholder="City">
+
+                    <div>
+                        <input id="cityInput" type="text" placeholder="City" name="search">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </div>
                 </form>
 
                 <div class="city-history-div">
-                    <p class="city-history-name">Richmond</p>
-                    <p class="city-history-name">Richmond</p>
+                    <p class="first-city-history">Richmond</p>
+                    <p class="next-city-history">Richmond</p>
                 </div>
             </div>
 
             <div class="eight columns">
 
                 <div>
-                    <h3 id="cityName">City</h3>
+                    <h5 id="cityDisplay">City <span id="dateDisplay"> (date) </span><i id="weatherIcon"></i></span></h5>
                 </div>
-                <h3>5-Day Forecast</h3>
+
+                <h5>5-Day Forecast</h5>
+
             </div>
 
         </div>
