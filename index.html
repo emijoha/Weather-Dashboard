@@ -8,10 +8,50 @@
     <!-- CSS -->
     <link rel="stylesheet" href="CSS/normalize.css">
     <link rel="stylesheet" href="CSS/skeleton.css">
-    <link rel="stylesheet" type="text/css" href="custom.css">
+    <link rel="stylesheet" type="text/css" href="CSS/custom.css">
 </head>
 
 <body>
+
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="twelve columns">
+                    <h1>Weather Dashboard</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="four columns city-sidebar">
+                <form>
+                    <label for="cityInput">Search by City:</label>
+                    <input id="cityInput" class="u-full-width" type="city" placeholder="City">
+                </form>
+
+                <div class="city-history-div">
+                    <p class="city-history-name">Richmond</p>
+                    <p class="city-history-name">Richmond</p>
+                </div>
+            </div>
+
+            <div class="eight columns">
+
+                <div>
+                    <h3 id="cityName">City</h3>
+                </div>
+                <h3>5-Day Forecast</h3>
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> -->
