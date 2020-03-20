@@ -24,6 +24,72 @@ $(document).ready(function () {
     var fourDays = moment().add(4, "days").format("l");
     var fiveDays = moment().add(5, "days").format("l");
 
+    // Render latest city search
+    var renderLastCity = function () {
+
+        // query variables AJAX call 1
+        var apiKey = "2b3fd2d1da58a021b07a4c6c75acd193";
+        var cityName = localStorage.getItem("city");
+        var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
+
+        // AJAX call 1
+        $.ajax({
+
+            url: queryURL,
+            method: "GET"
+
+        }).then(function (response) {
+
+            console.log(response);
+
+            // API variables
+            var cityName = response.name;
+            var tempK = response.main.temp;
+            var tempF = (1.8 * (tempK - 271.15)) + 32;
+            var humidity = response.main.humidity;
+            var windMPH = response.wind.speed;
+            var iconID = response.weather[0].icon;
+            var iconURL = "http://openweathermap.org/img/wn/" + iconID + "@2x.png";
+
+            // display in HTML
+            cityNameDisplay.text(cityName + " ");
+            dateDisplay.text(" (" + today + ") ");
+            weatherIcon.attr("src", iconURL);
+            tempDisplay.text("Temperature: " + tempF.toFixed(1) + " \xB0F");
+            humidDisplay.text("Humidity: " + humidity + "%");
+            windDisplay.text("Wind Speed: " + windMPH + "mph");
+
+            // create search history button
+            var cityHistory = $("<p>").text(cityName).attr("class", "city-history");
+            cityHistoryDiv.append(cityHistory);
+            // TO DO: conditionals for limiting number of renders and repeats
+
+            // query URL variables (2nd AJAX call)
+            var lat = localStorage.getItem("lat");
+            var lon = localStorage.getItem("lon");
+            var uvQueryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon;
+
+            $.ajax({
+
+                url: uvQueryURL,
+                method: "GET"
+
+            }).then(function (response2) {
+
+                console.log(response2);
+
+                // API variables
+                var uv = response2.value;
+
+                // display in HTML
+                uvDisplay.text("UV Index: ");
+                uvIndex.text(uv);
+                // TO DO: conditionals for color coding uv index display background
+
+            });
+        });
+    };
+
     // Event function
     var searchCity = function () {
 
@@ -118,6 +184,9 @@ $(document).ready(function () {
 
     // EXECUTING FUNCTIONS
     // __________________________________________________________________________________________________________________________
+
+    // Render last search on refresh
+    renderLastCity();
 
     // Event listener executes searchCity, and its nested ajax call functions
     searchButton.on("click", searchCity);
