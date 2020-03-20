@@ -37,22 +37,23 @@
                         <input id="cityInput" type="text" placeholder="City" name="search">
                         <button type="submit"><i class="fa fa-search"></i></button>
                     </div>
-                    
+
                 </form>
 
                 <div class="city-history-div">
-                    <!-- <p class="first-city-history">Richmond</p>
-                    <p class="next-city-history">Richmond</p> -->
+
                 </div>
             </div>
 
             <div class="eight columns">
 
-                <div>
-                    <h5 id="cityDisplay">City <span id="dateDisplay"> (date) </span><i id="weatherIcon"></i></span></h5>
+                <div class="city-weather-header">
+                    <h5 id="cityDisplay"></h5>
+                    <h5 id="dateDisplay"></h5>
+                    <img class="weather-icon" id="weatherIcon">
                 </div>
 
-                <h5>5-Day Forecast</h5>
+                <h5 id="fiveDayForecast"></h5>
 
             </div>
 
@@ -64,7 +65,7 @@
 
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
 </body>
 

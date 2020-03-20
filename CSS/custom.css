@@ -11,7 +11,7 @@ header {
 }
 
 form {
-    margin-bottom: 0;
+    
 }
 
 label {
@@ -28,7 +28,7 @@ input {
     margin-bottom: 0;
 }
 
-.first-city-history {
+.city-history {
     background-color: white;
     margin-bottom: 0;
     padding: 0.5rem;
@@ -38,20 +38,6 @@ input {
     border-style: solid;
     border-width: 0.05rem;
     border-color: rgb(204, 207, 209);
-}
-
-.next-city-history {
-    background-color: white;
-    margin-bottom: 0;
-    padding: 0.5rem;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-    border-radius: 0.35rem;
-    border-style: solid;
-    border-width: 0.05rem;
-    border-color: rgb(204, 207, 209);
-    border-top: none;
-
 }
 
 button {
@@ -76,4 +62,20 @@ button {
 
 h5 {
     font-size: 3rem;
+}
+
+#dateDisplay, #cityDisplay {
+    display: inline;
+}
+
+.city-weather-header {
+    position: relative;
+    margin-top: 3.5rem;
+}
+
+.weather-icon {
+    position: absolute;
+    top: -1.30rem;
+    display: inline;
+    width: 7rem;
 }
