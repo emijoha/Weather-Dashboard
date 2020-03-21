@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row">
                 <div class="twelve columns">
-                    <h2>Weather Dashboard</h2>
+                    <h3>Weather Dashboard</h3>
                 </div>
             </div>
         </div>
@@ -29,35 +29,43 @@
         <div class="row">
 
             <div class="four columns city-sidebar">
-                <form>
 
-                    <label for="cityInput">Search by City:</label>
+                <label for="cityInput">Search by City:</label>
 
-                    <div>
-                        <input id="cityInput" type="text" placeholder="City" name="search">
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                    </div>
-
-                </form>
+                <div>
+                    <input id="cityInput" type="text" placeholder="City" name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </div>
 
                 <div class="city-history-div">
 
                 </div>
+
             </div>
 
-            <div class="eight columns">
+            <div class="eight columns hidden">
 
-                <div class="city-weather-header">
-                    <h5 id="cityDisplay"></h5>
-                    <h5 id="dateDisplay"></h5>
+                <div class="city-weather-div">
+
+                    <h6 id="cityDisplay"></h6>
+                    <h6 id="dateDisplay"></h6>
                     <img class="weather-icon" id="weatherIcon">
+
                     <p id="temp"></p>
                     <p id="humid"></p>
                     <p id="wind"></p>
-                    <p id="uv"></p><p id="uvIndex"></p>
+                    <div class="uv-div">
+                        <p id="uv"></p>
+                        <p id="uvIndex"></p>
+                    </div>
+
                 </div>
 
-                <h5 id="fiveDayForecast"></h5>
+                <div class="five-day-forecast">
+
+                    <h6 id="fiveDayForecast"></h6>
+
+                </div>
 
             </div>
 

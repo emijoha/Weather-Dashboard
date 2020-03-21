@@ -4,6 +4,7 @@ $(document).ready(function () {
     // __________________________________________________________________________________________________________________________
 
     // DOM elements
+    var weatherResults = $(".eight");
     var cityInputEl = $("#cityInput");
     var searchButton = $("button");
     var cityHistoryDiv = $(".city-history-div");
@@ -52,6 +53,7 @@ $(document).ready(function () {
             var iconURL = "http://openweathermap.org/img/wn/" + iconID + "@2x.png";
 
             // display in HTML
+            weatherResults.removeClass("hidden");
             cityNameDisplay.text(cityName + " ");
             dateDisplay.text(" (" + today + ") ");
             weatherIcon.attr("src", iconURL);
@@ -135,6 +137,7 @@ $(document).ready(function () {
             localStorage.setItem("lon", response.coord.lon);
 
             // display in HTML
+            weatherResults.removeClass("hidden");
             cityNameDisplay.text(cityName + " ");
             dateDisplay.text(" (" + today + ") ");
             weatherIcon.attr("src", iconURL);

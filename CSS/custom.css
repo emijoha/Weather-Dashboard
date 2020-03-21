@@ -1,8 +1,4 @@
-.city-sidebar {
-    background-color: rgb(235, 239, 243);
-    padding: 0.5rem 1rem 1.5rem 1rem;
-}
-
+/* header */
 header {
     color: white;
     background-color: rgb(56, 56, 58);
@@ -10,8 +6,10 @@ header {
     padding-top: 2rem;
 }
 
-form {
-    
+/* search aside */
+.city-sidebar {
+    background-color: rgb(235, 239, 243);
+    padding: 0.5rem 1rem 1.5rem 1rem;
 }
 
 label {
@@ -26,18 +24,6 @@ input {
     float: left;
     width: 67%;
     margin-bottom: 0;
-}
-
-.city-history {
-    background-color: white;
-    margin-bottom: 0;
-    padding: 0.5rem;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-    border-radius: 0.35rem;
-    border-style: solid;
-    border-width: 0.05rem;
-    border-color: rgb(204, 207, 209);
 }
 
 button {
@@ -60,30 +46,67 @@ button {
     padding-top: 1.5rem;
 }
 
-h5 {
-    font-size: 3rem;
+.city-history {
+    background-color: white;
+    margin-bottom: 0;
+    padding: 0.5rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-radius: 0.35rem;
+    border-style: solid;
+    border-width: 0.05rem;
+    border-color: rgb(204, 207, 209);
+}
+
+/* City Weather Forecast */
+.city-weather-div {
+    margin-top: 2rem;
+    border-style: solid;
+    border-width: 0.1rem;
+    border-color: rgb(213, 218, 221);
+    border-radius: 0.5rem;
+    padding: 0rem 1.5rem 3rem 1.5rem;
+}
+
+.city-weather-div p {
+    padding: 1rem 0rem 1rem 0rem;
+    margin: 0;
+}
+
+.uv-div {
+    margin-top: 1rem;
+}
+
+h6 {
+    font-weight: 550;
+    font-size: 2.5rem;
 }
 
 #dateDisplay, #cityDisplay {
     display: inline;
 }
 
-.city-weather-header {
-    position: relative;
-    margin-top: 3.5rem;
-}
-
 .weather-icon {
-    position: absolute;
-    top: -1.30rem;
-    display: inline;
-    width: 7rem;
+    position: relative;
+    width: 6rem;
+    top: 2rem;
 }
 
-#uv {
+#uv, #uvIndex {
     display: inline;
 }
 
-#uvIndex {
-    display: inline;
+/* five day forecast */
+.five-day-forecast {
+    margin-top: 2rem;
+    border-style: solid;
+    border-width: 0.1rem;
+    border-color: rgb(213, 218, 221);
+    border-radius: 0.5rem;
+    padding: 0rem 1.5rem 3rem 1.5rem;
+}
+
+/* hidden class */
+.hidden {
+    display: none;
 }
