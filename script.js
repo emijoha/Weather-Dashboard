@@ -86,10 +86,10 @@ $(document).ready(function () {
             humidDisplay.text("Humidity: " + humidity + "%");
             windDisplay.text("Wind Speed: " + windMPH + "mph");
 
-            // create search history button
-            var cityHistory = $("<p>").text(cityName).attr("class", "city-history");
-            cityHistoryDiv.append(cityHistory);
-            // TO DO: conditionals for limiting number of renders and repeats
+            // // create search history button
+            // var cityHistory = $("<p>").text(cityName).attr("class", "city-history");
+            // cityHistoryDiv.append(cityHistory);
+            // // TO DO: conditionals for limiting number of renders and repeats
 
             ajaxTwo();
         });
