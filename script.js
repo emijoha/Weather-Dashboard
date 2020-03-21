@@ -182,7 +182,7 @@ $(document).ready(function () {
             uvIndex.text(uv);
             // TO DO: conditionals for color coding uv index display background
 
-        })
+        });
 
         ajaxThree();
     };
@@ -191,10 +191,20 @@ $(document).ready(function () {
     var ajaxThree = function () {
 
         // Query URL variables
-        // var apiKey = "2b3fd2d1da58a021b07a4c6c75acd193";
+        var apiKey = "2b3fd2d1da58a021b07a4c6c75acd193";
         var cityName = localStorage.getItem("city");
+        var fiveQueryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + apiKey;
         
-        console.log(cityName);
+        $.ajax({
+
+            url: fiveQueryURL,
+            method: "GET"
+
+        }).then(function(response3) {
+
+            console.log(response3);
+
+        });
 
     };
 
