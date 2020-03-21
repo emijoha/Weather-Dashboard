@@ -97,7 +97,7 @@ $(document).ready(function () {
 
         event.preventDefault();
 
-        // execture first ajax call
+        // execute first ajax call, with second an d third nested within
         ajaxOne();
 
     };
@@ -183,6 +183,19 @@ $(document).ready(function () {
             // TO DO: conditionals for color coding uv index display background
 
         })
+
+        ajaxThree();
+    };
+
+    // function ajax call 3
+    var ajaxThree = function () {
+
+        // Query URL variables
+        // var apiKey = "2b3fd2d1da58a021b07a4c6c75acd193";
+        var cityName = localStorage.getItem("city");
+        
+        console.log(cityName);
+
     };
 
     // EXECUTING FUNCTIONS

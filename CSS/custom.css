@@ -8,7 +8,7 @@ header {
 
 /* search aside */
 .city-sidebar {
-    background-color: rgb(235, 239, 243);
+    background-color: rgb(242, 244, 246);
     padding: 0.5rem 1rem 1.5rem 1rem;
 }
 
@@ -38,7 +38,7 @@ button {
     position: relative;
     width: 3.75rem;
     height: 3.75rem;
-    background-color: rgb(0, 104, 240);
+    background-color:  rgb(15, 119, 255);
 }
 
 .city-history-div {
@@ -99,11 +99,34 @@ h6 {
 /* five day forecast */
 .five-day-forecast {
     margin-top: 2rem;
+}
+
+.forecast {
+    background-color:  rgb(15, 119, 255);
     border-style: solid;
     border-width: 0.1rem;
-    border-color: rgb(213, 218, 221);
     border-radius: 0.5rem;
-    padding: 0rem 1.5rem 3rem 1.5rem;
+    border-color: rgb(0, 104, 240);
+    color: white;
+    width: 10.25rem;
+    text-align: center;
+    padding: 1rem 0.4rem 1rem 0.4rem;
+    float: left;
+    margin: 0 1.25rem 1.25rem 0;
+}
+
+.fore-icon {
+    width: 6rem;
+}
+
+.day {
+    font-size: 1.75rem;
+    margin-bottom: 0;
+}
+
+#foreTemp, #foreHumid {
+    margin-bottom: 0;
+    font-size: 1.35rem;
 }
 
 /* hidden class */
