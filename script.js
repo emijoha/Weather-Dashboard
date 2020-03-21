@@ -182,7 +182,32 @@ $(document).ready(function () {
             url: fiveQueryURL,
             method: "GET"
         }).then(function (response3) {
-            console.log(response3);
+
+            // arrays, keeping DOM elements together by index number
+            var icons = [icon1, icon2, icon3, icon4, icon5];
+            var temps = [temp1, temp2, temp3, temp4, temp5];
+            var humids = [humid1, humid2, humid3, humid4, humid5];
+            // array, collecting only the response3 indexes needed for the 5-day forecast, index mathes its DOM element
+            var day = [response3.list[0], response3.list[8], response3.list[16], response3.list[24], response3.list[32]];
+            console.log(day);
+
+            for (var i = 0; i < 5; i++) {
+                // getting icon ID from each forecast in day array, and assigning its icon url to matching image in DOM
+                var iconCode = day[i].weather[0].icon;
+                var iconAddress = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
+                icons[i].attr("src", iconAddress);
+                
+                // getting temp from each forecast of day array, assigning to matching temp text in DOM
+                var tK = day[i].main.temp;
+                var tF = (1.8 * (tK - 271.15)) + 32;
+                temps[i].text("Temp: " + tF.toFixed(1) + " \xB0F");
+                console.log(tF.toFixed(1));
+
+                // getting humidity from each forecast of day array, assigning to matching humidity text in DOM
+                var hum = day[i].main.humidity;
+                humids[i].text("Humidity: " + hum + "%");
+                console.log(hum);
+            }
         });
     };
 
