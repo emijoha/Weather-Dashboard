@@ -16,6 +16,27 @@ $(document).ready(function () {
     var windDisplay = $("#wind");
     var uvDisplay = $("#uv");
     var uvIndex = $("#uvIndex");
+    // 5-Day forecast DOM
+    var day1 = $("#day1");
+    var day2 = $("#day2");
+    var day3 = $("#day3");
+    var day4 = $("#day4");
+    var day5 = $("#day5");
+    var temp1 = $("#temp1");
+    var temp2 = $("#temp2");
+    var temp3 = $("#temp3");
+    var temp4 = $("#temp4");
+    var temp5 = $("#temp5");
+    var humid1 = $("#humid1");
+    var humid2 = $("#humid2");
+    var humid3 = $("#humid3");
+    var humid4 = $("#humid4");
+    var humid5 = $("#humid5");
+    var icon1 = $("#foreIcon1");
+    var icon2 = $("#foreIcon2");
+    var icon3 = $("#foreIcon3");
+    var icon4 = $("#foreIcon4");
+    var icon5 = $("#foreIcon5");
 
     // Moment.js
     var today = moment().format("l");
@@ -25,22 +46,27 @@ $(document).ready(function () {
     var fourDays = moment().add(4, "days").format("l");
     var fiveDays = moment().add(5, "days").format("l");
 
-    // Render latest city search
-    var renderLastCity = function () {
+    // Display times
+    dateDisplay.text(" (" + today + ") ");
+    day1.text(tomorrow);
+    day2.text(twoDays);
+    day3.text(threeDays);
+    day4.text(fourDays);
+    day5.text(fiveDays);
 
-        // query variables AJAX call 1
+    // function AJAX 0.5 (for using local storage instead of input for renderLastCity function)
+    var ajaxOneHalf = function () {
+
+        // query variables AJAX call 0.5
         var apiKey = "2b3fd2d1da58a021b07a4c6c75acd193";
         var cityName = localStorage.getItem("city");
         var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
 
-        // AJAX call 1
+        // AJAX call 0.5
         $.ajax({
-
             url: queryURL,
             method: "GET"
-
         }).then(function (response) {
-
             console.log(response);
 
             // API variables
@@ -55,7 +81,6 @@ $(document).ready(function () {
             // display in HTML
             weatherResults.removeClass("hidden");
             cityNameDisplay.text(cityName + " ");
-            dateDisplay.text(" (" + today + ") ");
             weatherIcon.attr("src", iconURL);
             tempDisplay.text("Temperature: " + tempF.toFixed(1) + " \xB0F");
             humidDisplay.text("Humidity: " + humidity + "%");
@@ -66,43 +91,11 @@ $(document).ready(function () {
             cityHistoryDiv.append(cityHistory);
             // TO DO: conditionals for limiting number of renders and repeats
 
-            // query URL variables (2nd AJAX call)
-            var lat = localStorage.getItem("lat");
-            var lon = localStorage.getItem("lon");
-            var uvQueryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon;
-
-            $.ajax({
-
-                url: uvQueryURL,
-                method: "GET"
-
-            }).then(function (response2) {
-
-                console.log(response2);
-
-                // API variables
-                var uv = response2.value;
-
-                // display in HTML
-                uvDisplay.text("UV Index: ");
-                uvIndex.text(uv);
-                // TO DO: conditionals for color coding uv index display background
-
-            });
+            ajaxTwo();
         });
     };
 
-    // Event function
-    var searchCity = function () {
-
-        event.preventDefault();
-
-        // execute first ajax call, with second an d third nested within
-        ajaxOne();
-
-    };
-
-    // function AJAX call 1
+    // function AJAX call 1, with AJAX call 2 inside
     var ajaxOne = function () {
 
         // Query URL variables
@@ -115,12 +108,9 @@ $(document).ready(function () {
 
         // AJAX call 1
         $.ajax({
-
             url: queryURL,
             method: "GET"
-
         }).then(function (response) {
-
             console.log(response);
 
             // API variables
@@ -139,7 +129,6 @@ $(document).ready(function () {
             // display in HTML
             weatherResults.removeClass("hidden");
             cityNameDisplay.text(cityName + " ");
-            dateDisplay.text(" (" + today + ") ");
             weatherIcon.attr("src", iconURL);
             tempDisplay.text("Temperature: " + tempF.toFixed(1) + " \xB0F");
             humidDisplay.text("Humidity: " + humidity + "%");
@@ -152,11 +141,10 @@ $(document).ready(function () {
 
             // execute second AJAX call
             ajaxTwo();
-
         });
     };
 
-    // function AJAX call 2
+    // function AJAX call 2, with AJAX 3 nested inside
     var ajaxTwo = function () {
 
         // query URL variables (2nd AJAX call)
@@ -166,12 +154,9 @@ $(document).ready(function () {
         var uvQueryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon;
 
         $.ajax({
-
             url: uvQueryURL,
             method: "GET"
-
         }).then(function (response2) {
-
             console.log(response2);
 
             // API variables
@@ -181,9 +166,7 @@ $(document).ready(function () {
             uvDisplay.text("UV Index: ");
             uvIndex.text(uv);
             // TO DO: conditionals for color coding uv index display background
-
         });
-
         ajaxThree();
     };
 
@@ -194,18 +177,25 @@ $(document).ready(function () {
         var apiKey = "2b3fd2d1da58a021b07a4c6c75acd193";
         var cityName = localStorage.getItem("city");
         var fiveQueryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + apiKey;
-        
-        $.ajax({
 
+        $.ajax({
             url: fiveQueryURL,
             method: "GET"
-
-        }).then(function(response3) {
-
+        }).then(function (response3) {
             console.log(response3);
-
         });
+    };
 
+    // Function to render last city search at beginning of page refresh
+    // won't render anythign is local storage is empty
+    var renderLastCity = function () {
+        ajaxOneHalf();
+    };
+
+    // Event function
+    var searchCity = function () {
+        event.preventDefault();
+        ajaxOne();
     };
 
     // EXECUTING FUNCTIONS
