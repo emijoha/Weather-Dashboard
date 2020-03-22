@@ -12,7 +12,6 @@ $(document).ready(function () {
     var tempDisplay = $("#temp");
     var humidDisplay = $("#humid");
     var windDisplay = $("#wind");
-    var uvDisplay = $("#uv-div");
     var uvIndex = $("#uv");
     // 5-Day forecast DOM
     var day1 = $("#day1");
@@ -151,10 +150,30 @@ $(document).ready(function () {
         }).then(function (response2) {
             // API variables
             var uv = response2.value;
-
+            console.log(uv);
+            console.log(parseInt(uv));
             // display in HTML
-            uvIndex.text("UV Index: " + uv);
-            // TO DO: conditionals for color coding uv index display background
+            var uvColor = $("<span>").text(uv);
+            uvIndex.text("UV Index: ");
+            uvIndex.append(uvColor)
+
+            // color coding uv index 
+            var uvNum = parseInt(uv);
+            if ( uvNum <= 3 ) {
+                uvColor.addClass("green");
+                uvColor.removeClass("yellow");
+                uvColor.removeClass("red");
+            }
+            else if ( uvNum <=6 ) {
+                uvColor.addClass("yellow");
+                uvColor.removeClass("green");
+                uvColor.removeClass("red");
+            }
+            else {
+                uvColor.addClass("red");
+                uvColor.removeClass("yellow");
+                uvColor.removeClass("green");
+            }
         });
         ajaxThree();
     };
@@ -188,12 +207,10 @@ $(document).ready(function () {
                 var tK = day[i].main.temp;
                 var tF = (1.8 * (tK - 271.15)) + 32;
                 temps[i].text("Temp: " + tF.toFixed(1) + " \xB0F");
-                console.log(tF.toFixed(1));
 
                 // getting humidity from each forecast of day array, assigning to matching humidity text in DOM
                 var hum = day[i].main.humidity;
                 humids[i].text("Humidity: " + hum + "%");
-                console.log(hum);
             }
         });
     };

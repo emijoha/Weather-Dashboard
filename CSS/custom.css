@@ -1,11 +1,11 @@
 body {
-    background-color: rgb(243, 243, 243)
+    background-color: rgb(231, 232, 233)
 }
 
 /* header */
 header {
     color: white;
-    background-color: rgb(56, 56, 58);
+    background-color: rgb(42, 42, 42);
     text-align: center;
     padding-top: 2rem;
 }
@@ -54,8 +54,8 @@ button {
     background-color: white;
     margin-bottom: 0;
     padding: 0.5rem;
-    padding-top: 0.65rem;
-    padding-bottom: 0.65rem;
+    padding-top: 0.86rem;
+    padding-bottom: 0.86rem;
     border-radius: 0.35rem;
     border-style: solid;
     border-width: 0.05rem;
@@ -89,8 +89,8 @@ button {
     padding-top: 2.5rem;
 }
 
-.uv-div {
-    margin-top: 1rem;
+#uv {
+    margin-top: 0rem;
 }
 
 h6 {
@@ -119,10 +119,6 @@ h6 {
     border-right: solid;
     border-width: 0.1rem;
     border-color: rgb(213, 218, 221);
-}
-
-#uv, #uvIndex {
-    display: inline;
 }
 
 /* five day forecast */
@@ -186,4 +182,36 @@ h6 {
 /* hidden class */
 .hidden {
     display: none;
+}
+
+/* uv index color codes */
+.red {
+    color: white;
+    background-color: rgb(189, 0, 0);
+    border: solid;
+    border-width: 0.05rem;
+    border-radius: 0.5rem;
+    border-color:  rgb(189, 0, 0);
+    padding: 0.25rem 0.6rem;
+    
+}
+
+.yellow {
+    color: black;
+    background-color: rgb(255, 222, 115);
+    border: solid;
+    border-width: 0.05rem;
+    border-radius: 0.5rem;
+    border-color:  rgb(255, 219, 100);
+    padding: 0.25rem 0.6rem;
+}
+
+.green {
+    color: white;
+    background-color: rgb(3, 151, 40);
+    border: solid;
+    border-width: 0.05rem;
+    border-radius: 0.5rem;
+    border-color: rgb(0, 138, 34);
+    padding: 0.25rem 0.6rem;
 }
