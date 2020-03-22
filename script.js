@@ -13,6 +13,7 @@ $(document).ready(function () {
     var humidDisplay = $("#humid");
     var windDisplay = $("#wind");
     var uvIndex = $("#uv");
+    var forecastDiv = $(".five-day-forecast");
     // 5-Day forecast DOM
     var day1 = $("#day1");
     var day2 = $("#day2");
@@ -42,7 +43,6 @@ $(document).ready(function () {
     var threeDays = moment().add(3, "days").format("l");
     var fourDays = moment().add(4, "days").format("l");
     var fiveDays = moment().add(5, "days").format("l");
-
     // Display dates (5-day forecast)
     day1.text(tomorrow);
     day2.text(twoDays);
@@ -50,14 +50,13 @@ $(document).ready(function () {
     day4.text(fourDays);
     day5.text(fiveDays);
 
-    // function AJAX 0.5 (uses local storage instead of search input for rendering weather when page revsited)
-    var ajaxOneHalf = function () {
-        // query variables AJAX call 0.5
+    // *FUNCTION* AJAX storage (uses local storage instead of search input for rendering weather when page revisited)
+    var ajaxOneStorage = function () {
+        // query variables AJAX call storage
         var apiKey = "2b3fd2d1da58a021b07a4c6c75acd193";
         var cityName = localStorage.getItem("city");
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
-
-        // AJAX call 0.5
+        // AJAX call storage
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -70,35 +69,27 @@ $(document).ready(function () {
             var windMPH = response.wind.speed;
             var iconID = response.weather[0].icon;
             var iconURL = "https://openweathermap.org/img/wn/" + iconID + "@2x.png";
-
             // display in HTML
             weatherResults.removeClass("hidden");
+            forecastDiv.removeClass("hidden");
             cityDateDisplay.text(city + " (" + today + ") ");
             weatherIcon.attr("src", iconURL);
             tempDisplay.text("Temperature: " + tempF.toFixed(1) + " \xB0F");
             humidDisplay.text("Humidity: " + humidity + "%");
             windDisplay.text("Wind Speed: " + windMPH + "mph");
-
-            // // create search history button
-            // var cityHistory = $("<p>").text(cityName).attr("class", "city-history");
-            // cityHistoryDiv.append(cityHistory);
-            // // TO DO: conditionals for limiting number of renders and repeats
-
-            // Then executes ajaxTwo and ajaxThree (nested)
+            // execute ajaxTwo with ajaxThree nested
             ajaxTwo();
         });
     };
 
-    // function AJAX call 1, with AJAX call 2 inside
+    // *FUNCTION* AJAX call 1, with AJAX call 2 inside
     var ajaxOne = function () {
         // Query URL variables
         var apiKey = "2b3fd2d1da58a021b07a4c6c75acd193";
         var cityName = cityInputEl.val().trim();
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
-
         // store city: 
         localStorage.setItem("city", cityName);
-
         // AJAX call 1 - current weather data
         $.ajax({
             url: queryURL,
@@ -112,21 +103,19 @@ $(document).ready(function () {
             var windMPH = response.wind.speed;
             var iconID = response.weather[0].icon;
             var iconURL = "https://openweathermap.org/img/wn/" + iconID + "@2x.png";
-
             // city's coordinates needed for UV index (ajax call 2)
             localStorage.setItem("lat", response.coord.lat);
             localStorage.setItem("lon", response.coord.lon);
-
             // display in HTML
             weatherResults.removeClass("hidden");
+            forecastDiv.removeClass("hidden");
             cityDateDisplay.text(city + " (" + today + ") ");
             weatherIcon.attr("src", iconURL);
             tempDisplay.text("Temperature: " + tempF.toFixed(1) + " \xB0F");
             humidDisplay.text("Humidity: " + humidity + "%");
             windDisplay.text("Wind Speed: " + windMPH + "mph");
-
             // create search history button
-            var cityHistory = $("<p>").text(cityName).attr("class", "city-history");
+            var cityHistory = $("<p>").text(city).attr("class", "city-history");
             cityHistoryDiv.append(cityHistory);
             // TO DO: conditionals for limiting number of renders and repeats
 
@@ -135,14 +124,13 @@ $(document).ready(function () {
         });
     };
 
-    // function AJAX call 2, with AJAX 3 nested inside
+    // *FUNCTION* AJAX call 2, with AJAX 3 nested inside
     var ajaxTwo = function () {
         // query URL variables (2nd AJAX call) - UV index
         var apiKey = "2b3fd2d1da58a021b07a4c6c75acd193";
         var lat = localStorage.getItem("lat");
         var lon = localStorage.getItem("lon");
         var uvQueryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon;
-
         // ajax call 2 - UV index
         $.ajax({
             url: uvQueryURL,
@@ -150,13 +138,10 @@ $(document).ready(function () {
         }).then(function (response2) {
             // API variables
             var uv = response2.value;
-            console.log(uv);
-            console.log(parseInt(uv));
             // display in HTML
             var uvColor = $("<span>").text(uv);
             uvIndex.text("UV Index: ");
             uvIndex.append(uvColor)
-
             // color coding uv index 
             var uvNum = parseInt(uv);
             if ( uvNum <= 3 ) {
@@ -187,13 +172,12 @@ $(document).ready(function () {
         ajaxThree();
     };
 
-    // function ajax call 3 - 5Day forecast
+    // *FUNCTION* ajax call 3 - 5Day forecast
     var ajaxThree = function () {
         // Query URL variables
         var apiKey = "2b3fd2d1da58a021b07a4c6c75acd193";
         var cityName = localStorage.getItem("city");
         var fiveQueryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + apiKey;
-
         // third ajax call, 5-Day forcast
         $.ajax({
             url: fiveQueryURL,
@@ -205,18 +189,15 @@ $(document).ready(function () {
             var humids = [humid1, humid2, humid3, humid4, humid5];
             // array, collecting only the response3 indexes needed for the 5-day forecast, index mathes its DOM element
             var day = [response3.list[0], response3.list[8], response3.list[16], response3.list[24], response3.list[32]];
-
             for (var i = 0; i < 5; i++) {
                 // getting icon ID from each forecast in day array, and assigning its icon url to matching image in DOM
                 var iconCode = day[i].weather[0].icon;
                 var iconAddress = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
                 icons[i].attr("src", iconAddress);
-                
                 // getting temp from each forecast of day array, assigning to matching temp text in DOM
                 var tK = day[i].main.temp;
                 var tF = (1.8 * (tK - 271.15)) + 32;
                 temps[i].text("Temp: " + tF.toFixed(1) + " \xB0F");
-
                 // getting humidity from each forecast of day array, assigning to matching humidity text in DOM
                 var hum = day[i].main.humidity;
                 humids[i].text("Humidity: " + hum + "%");
@@ -224,16 +205,18 @@ $(document).ready(function () {
         });
     };
 
-    // Function to render last city search at beginning of page refresh
+    // *FUNCTION* to render last city search at beginning of page refresh
     // won't render anything if local storage is empty
     var renderLastCity = function () {
-        ajaxOneHalf();
+        ajaxOneStorage();
     };
 
-    // Event function
+    // *FUNCTION* event
     var searchCity = function () {
         event.preventDefault();
         ajaxOne();
+        // empty search input
+        cityInputEl.val("");
     };
 
     // EXECUTING FUNCTIONS
@@ -241,9 +224,20 @@ $(document).ready(function () {
     // Render last search on refresh
     renderLastCity();
 
-    // Event listener executes searchCity, and its nested ajax call functions
+    // Event listener for search button, executes nested ajax calls and other searchCity functions
     searchButton.on("click", searchCity);
 
+    // Event listenr for <p> tag clicks (city search history buttons)
+    cityHistoryDiv.on("click", function (){
+        // select the event target element and define as variable
+        var click = $(event.target);
+        // only save the text from a <p> tag click
+        if ( click.is( "p" )) {
+           localStorage.setItem("city", event.target.innerText);
+        }
+        // use storage ajax call, now that <p> click text is set in local storage
+        ajaxOneStorage();
+    });
 });
 
 
