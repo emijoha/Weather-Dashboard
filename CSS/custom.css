@@ -187,13 +187,22 @@ h6 {
 /* uv index color codes */
 .red {
     color: white;
-    background-color: rgb(189, 0, 0);
+    background-color: rgb(187, 0, 0);
     border: solid;
     border-width: 0.05rem;
     border-radius: 0.5rem;
-    border-color:  rgb(189, 0, 0);
+    border-color:  rgb(141, 0, 0);
     padding: 0.25rem 0.6rem;
-    
+}
+
+.orange {
+    color: white;
+    background-color: rgb(248, 99, 0);
+    border: solid;
+    border-width: 0.05rem;
+    border-radius: 0.5rem;
+    border-color:  rgb(211, 95, 0);
+    padding: 0.25rem 0.6rem;
 }
 
 .yellow {
@@ -202,13 +211,13 @@ h6 {
     border: solid;
     border-width: 0.05rem;
     border-radius: 0.5rem;
-    border-color:  rgb(255, 219, 100);
+    border-color:  rgb(255, 188, 100);
     padding: 0.25rem 0.6rem;
 }
 
 .green {
     color: white;
-    background-color: rgb(3, 151, 40);
+    background-color: rgb(2, 175, 46);
     border: solid;
     border-width: 0.05rem;
     border-radius: 0.5rem;

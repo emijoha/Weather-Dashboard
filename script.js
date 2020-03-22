@@ -163,16 +163,25 @@ $(document).ready(function () {
                 uvColor.addClass("green");
                 uvColor.removeClass("yellow");
                 uvColor.removeClass("red");
+                uvColor.removeClass("orange");
             }
             else if ( uvNum <=6 ) {
                 uvColor.addClass("yellow");
                 uvColor.removeClass("green");
                 uvColor.removeClass("red");
+                uvColor.removeClass("orange");
+            }
+            else if ( uvNum <= 9 ) {
+                uvColor.addClass("orange");
+                uvColor.removeClass("yellow");
+                uvColor.removeClass("green");
+                uvColor.removeClass("red");
             }
             else {
                 uvColor.addClass("red");
-                uvColor.removeClass("yellow");
                 uvColor.removeClass("green");
+                uvColor.removeClass("yellow");
+                uvColor.removeClass("orange");
             }
         });
         ajaxThree();
