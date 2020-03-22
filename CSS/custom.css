@@ -1,3 +1,7 @@
+body {
+    background-color: rgb(243, 243, 243)
+}
+
 /* header */
 header {
     color: white;
@@ -7,9 +11,9 @@ header {
 }
 
 /* search aside */
-.city-sidebar {
-    background-color: rgb(242, 244, 246);
-    padding: 0.5rem 1rem 1.5rem 1rem;
+.city-sidebar {;
+    padding-top: 0.65rem;
+    padding-left: 0.5rem;
 }
 
 label {
@@ -50,8 +54,8 @@ button {
     background-color: white;
     margin-bottom: 0;
     padding: 0.5rem;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
+    padding-top: 0.65rem;
+    padding-bottom: 0.65rem;
     border-radius: 0.35rem;
     border-style: solid;
     border-width: 0.05rem;
@@ -61,17 +65,28 @@ button {
 /* City Weather Forecast */
 .city-weather-div {
     position: relative;
+    background-color: white;
     margin-top: 2rem;
     border-style: solid;
     border-width: 0.1rem;
     border-color: rgb(213, 218, 221);
     border-radius: 0.5rem;
-    padding: 0rem 1.5rem 3rem 1.5rem;
+    padding: 0rem 0rem 2.5rem 0rem;
 }
 
 .city-weather-div p {
     padding: 1rem 0rem 1rem 0rem;
     margin: 0;
+    clear: both;
+    padding-left: 8rem;
+    font-size: 1.75rem;
+}
+
+#temp {
+    border-top: solid;
+    border-width: 0.1rem;
+    border-color: rgb(213, 218, 221);
+    padding-top: 2.5rem;
 }
 
 .uv-div {
@@ -83,15 +98,27 @@ h6 {
     font-size: 2.5rem;
 }
 
-#dateDisplay, #cityDisplay {
-    display: inline;
+#cityDateDisplay {
+    position: relative;
+    padding-left: 8rem;
+    float: left;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 0rem;
 }
 
 .weather-icon {
-    position: relative;
-    display: inline;
+    display: block;
+    float: left;
+    clear: both;
+    position: absolute;
     width: 6rem;
-    top: 2rem;
+    top: 0rem;
+    left: 0rem;
+    border-bottom: solid;
+    border-right: solid;
+    border-width: 0.1rem;
+    border-color: rgb(213, 218, 221);
 }
 
 #uv, #uvIndex {
@@ -101,6 +128,27 @@ h6 {
 /* five day forecast */
 .five-day-forecast {
     margin-top: 2rem;
+    margin-bottom: 3rem;
+    background-color: white;
+    border-style: solid;
+    border-width: 0.1rem;
+    border-color: rgb(213, 218, 221);
+    border-radius: 0.5rem;
+}
+
+#fiveDayForecast {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 8rem;
+    margin-bottom: 0rem;
+    border-bottom: solid;
+    border-width: 0.1rem;
+    border-color: rgb(213, 218, 221);
+}
+
+.days-wrapper {
+    position: relative;
+    padding-left: 8rem;
 }
 
 .forecast {
@@ -110,11 +158,15 @@ h6 {
     border-radius: 0.5rem;
     border-color: rgb(0, 104, 240);
     color: white;
-    width: 10.25rem;
+    width: 13.5rem;
     text-align: center;
-    padding: 1rem 0.4rem 1rem 0.4rem;
+    padding: 2rem 0.4rem 2rem 0.4rem;
     float: left;
-    margin: 0 1.25rem 1.25rem 0;
+    margin: 2.5rem 1.5rem 2.5rem 0;
+}
+
+#forecast5 {
+    margin-right: 0;
 }
 
 .fore-icon {
@@ -128,7 +180,7 @@ h6 {
 
 .foreTemp, .foreHumid {
     margin-bottom: 0;
-    font-size: 1.35rem;
+    font-size: 1.5rem;
 }
 
 /* hidden class */

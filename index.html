@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,9 +11,7 @@
     <!-- font and icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
 <body>
-
     <header>
         <div class="container">
             <div class="row">
@@ -24,96 +21,71 @@
             </div>
         </div>
     </header>
-
     <div class="container">
         <div class="row">
-
             <div class="four columns city-sidebar">
-
                 <label for="cityInput">Search by City:</label>
-
                 <div>
                     <input id="cityInput" type="text" placeholder="City" name="search">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </div>
-
                 <div class="city-history-div">
-
                 </div>
-
             </div>
-
             <div class="eight columns hidden">
-
                 <div class="city-weather-div">
-
-                    <h6 id="cityDisplay"></h6>
-                    <h6 id="dateDisplay"></h6>
                     <img class="weather-icon" id="weatherIcon">
-
+                    <h6 id="cityDateDisplay"></h6>
+                    
                     <p id="temp"></p>
                     <p id="humid"></p>
                     <p id="wind"></p>
                     <div class="uv-div">
                         <p id="uv"></p>
-                        <p id="uvIndex"></p>
                     </div>
-
                 </div>
-
-                <div class="five-day-forecast">
-
-                    <h6 id="fiveDayForecast">5-Day Forecast</h6>
-
-                    <div id="forecast1" class="forecast">
-                        <p id="day1" class="day"></p>
-                        <img id="foreIcon1" class="fore-icon">
-                        <p id="temp1" class="foreTemp"></p>
-                        <p id="humid1" class="foreHumid"></p>
-                    </div>
-
-                    <div id="forecast2" class="forecast">
-                        <p id="day2" class="day"></p>
-                        <img id="foreIcon2" class="fore-icon">
-                        <p id="temp2" class="foreTemp"></p>
-                        <p id="humid2" class="foreHumid"></p>
-                    </div>
-
-                    <div id="forecast3" class="forecast">
-                        <p id="day3" class="day"></p>
-                        <img id="foreIcon3" class="fore-icon">
-                        <p id="temp3" class="foreTemp"></p>
-                        <p id="humid3" class="foreHumid"></p>
-                    </div>
-
-                    <div id="forecast4" class="forecast">
-                        <p id="day4" class="day"></p>
-                        <img id="foreIcon4" class="fore-icon">
-                        <p id="temp4" class="foreTemp"></p>
-                        <p id="humid4" class="foreHumid"></p>
-                    </div>
-
-                    <div id="forecast5" class="forecast">
-                        <p id="day5" class="day"></p>
-                        <img id="foreIcon5" class="fore-icon">
-                        <p id="temp5" class="foreTemp"></p>
-                        <p id="humid5" class="foreHumid"></p>
-                    </div>
-
-                </div>
-
             </div>
-
         </div>
-
+        <div class="row">
+            <div class="twelve columns five-day-forecast">
+                <h6 id="fiveDayForecast">5-Day Forecast</h6>
+                <div class="days-wrapper">
+                <div id="forecast1" class="forecast">
+                    <p id="day1" class="day"></p>
+                    <img id="foreIcon1" class="fore-icon">
+                    <p id="temp1" class="foreTemp"></p>
+                    <p id="humid1" class="foreHumid"></p>
+                </div>
+                <div id="forecast2" class="forecast">
+                    <p id="day2" class="day"></p>
+                    <img id="foreIcon2" class="fore-icon">
+                    <p id="temp2" class="foreTemp"></p>
+                    <p id="humid2" class="foreHumid"></p>
+                </div>
+                <div id="forecast3" class="forecast">
+                    <p id="day3" class="day"></p>
+                    <img id="foreIcon3" class="fore-icon">
+                    <p id="temp3" class="foreTemp"></p>
+                    <p id="humid3" class="foreHumid"></p>
+                </div>
+                <div id="forecast4" class="forecast">
+                    <p id="day4" class="day"></p>
+                    <img id="foreIcon4" class="fore-icon">
+                    <p id="temp4" class="foreTemp"></p>
+                    <p id="humid4" class="foreHumid"></p>
+                </div>
+                <div id="forecast5" class="forecast">
+                    <p id="day5" class="day"></p>
+                    <img id="foreIcon5" class="fore-icon">
+                    <p id="temp5" class="foreTemp"></p>
+                    <p id="humid5" class="foreHumid"></p>
+                </div>
+            </div>
+            </div>
+        </div>
     </div>
-
-    </div>
-
-
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
 </body>
-
 </html>
