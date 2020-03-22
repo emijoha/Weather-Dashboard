@@ -60,7 +60,7 @@ $(document).ready(function () {
         // query variables AJAX call 0.5
         var apiKey = "2b3fd2d1da58a021b07a4c6c75acd193";
         var cityName = localStorage.getItem("city");
-        var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
 
         // AJAX call 0.5
         $.ajax({
@@ -76,7 +76,7 @@ $(document).ready(function () {
             var humidity = response.main.humidity;
             var windMPH = response.wind.speed;
             var iconID = response.weather[0].icon;
-            var iconURL = "http://openweathermap.org/img/wn/" + iconID + "@2x.png";
+            var iconURL = "https://openweathermap.org/img/wn/" + iconID + "@2x.png";
 
             // display in HTML
             weatherResults.removeClass("hidden");
@@ -101,7 +101,7 @@ $(document).ready(function () {
         // Query URL variables
         var apiKey = "2b3fd2d1da58a021b07a4c6c75acd193";
         var cityName = cityInputEl.val().trim();
-        var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
 
         // store city: 
         localStorage.setItem("city", cityName);
@@ -120,7 +120,7 @@ $(document).ready(function () {
             var humidity = response.main.humidity;
             var windMPH = response.wind.speed;
             var iconID = response.weather[0].icon;
-            var iconURL = "http://openweathermap.org/img/wn/" + iconID + "@2x.png";
+            var iconURL = "https://openweathermap.org/img/wn/" + iconID + "@2x.png";
 
             // city's coordinates needed for UV index (ajax call 2)
             localStorage.setItem("lat", response.coord.lat);
@@ -151,7 +151,7 @@ $(document).ready(function () {
         var apiKey = "2b3fd2d1da58a021b07a4c6c75acd193";
         var lat = localStorage.getItem("lat");
         var lon = localStorage.getItem("lon");
-        var uvQueryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon;
+        var uvQueryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon;
 
         $.ajax({
             url: uvQueryURL,
@@ -176,7 +176,7 @@ $(document).ready(function () {
         // Query URL variables
         var apiKey = "2b3fd2d1da58a021b07a4c6c75acd193";
         var cityName = localStorage.getItem("city");
-        var fiveQueryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + apiKey;
+        var fiveQueryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + apiKey;
 
         $.ajax({
             url: fiveQueryURL,
@@ -194,7 +194,7 @@ $(document).ready(function () {
             for (var i = 0; i < 5; i++) {
                 // getting icon ID from each forecast in day array, and assigning its icon url to matching image in DOM
                 var iconCode = day[i].weather[0].icon;
-                var iconAddress = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
+                var iconAddress = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
                 icons[i].attr("src", iconAddress);
                 
                 // getting temp from each forecast of day array, assigning to matching temp text in DOM
