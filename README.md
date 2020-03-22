@@ -46,8 +46,8 @@ THEN I am presented with the last searched city forecast
 ## Upcoming Features
 
 ```
-WHEN I reach the max search history
-THEN the oldest search history is cleared
+WHEN I reach the max search history of 5
+THEN the oldest search history is cleared to accomadate the newest
 
 WHEN I open the dashboard
 THEN I am ALSO presented with the latest search history
