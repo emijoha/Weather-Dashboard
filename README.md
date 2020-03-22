@@ -14,7 +14,7 @@ jQuery
 Moment.js
 OpenWeather API: Current Weather
 OpenWeather API: UV Index
-Open Weather API: 5-Day Forecast
+OpenWeather API: 5-Day Forecast
 ```
 
 ## User Story
