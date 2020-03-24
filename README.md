@@ -31,10 +31,12 @@ SO THAT I can plan a trip accordingly
 GIVEN a clear weather dashboard with search inputs
 WHEN I search for a city
 THEN I am presented with current and future conditions for that city and that city is added to the search history
+    WHEN I reach the max search history of 5
+    THEN the oldest search history is cleared to accomadate the newest
 WHEN I view current weather conditions for that city
 THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-WHEN I view the UV index
-THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
+    WHEN I view the UV index
+    THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
 WHEN I view future weather conditions for that city
 THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
 WHEN I click on a city in the search history
@@ -46,9 +48,6 @@ THEN I am presented with the last searched city forecast
 ## Upcoming Features
 
 ```
-WHEN I reach the max search history of 5
-THEN the oldest search history is cleared to accomadate the newest
-
 WHEN I open the dashboard
 THEN I am ALSO presented with the latest search history
 ```
