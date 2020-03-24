@@ -114,10 +114,17 @@ $(document).ready(function () {
             tempDisplay.text("Temperature: " + tempF.toFixed(1) + " \xB0F");
             humidDisplay.text("Humidity: " + humidity + "%");
             windDisplay.text("Wind Speed: " + windMPH + "mph");
-            // create search history button
+            // create search history button and keep track of elements in div
             var cityHistory = $("<p>").text(city).attr("class", "city-history");
-            cityHistoryDiv.append(cityHistory);
-            // TO DO: conditionals for limiting number of renders and repeats
+            var historyNum = cityHistoryDiv[0].children.length;
+            if ( historyNum < 5) {
+                cityHistoryDiv.prepend(cityHistory);
+            }
+            // limiting elements to 5, and deleting last child as new search are prepending
+            else if ( historyNum === 5) {
+                cityHistoryDiv[0].lastElementChild.remove();
+                cityHistoryDiv.prepend(cityHistory);
+            }
 
             // execute second AJAX call, with third nested
             ajaxTwo();
