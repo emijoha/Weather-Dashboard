@@ -77,6 +77,9 @@ $(document).ready(function () {
             tempDisplay.text("Temperature: " + tempF.toFixed(1) + " \xB0F");
             humidDisplay.text("Humidity: " + humidity + "%");
             windDisplay.text("Wind Speed: " + windMPH + "mph");
+            // get inner HTML of previous cityHistoryDiv
+            var previousHistory = localStorage.getItem("histories");
+            cityHistoryDiv.append(previousHistory);
             // execute ajaxTwo with ajaxThree nested
             ajaxTwo();
         });
@@ -117,15 +120,16 @@ $(document).ready(function () {
             // create search history button and keep track of elements in div
             var cityHistory = $("<p>").text(city).attr("class", "city-history");
             var historyNum = cityHistoryDiv[0].children.length;
-            if ( historyNum < 5) {
+            if (historyNum < 5) {
                 cityHistoryDiv.prepend(cityHistory);
             }
             // limiting elements to 5, and deleting last child as new search are prepending
-            else if ( historyNum === 5) {
+            else if (historyNum === 5) {
                 cityHistoryDiv[0].lastElementChild.remove();
                 cityHistoryDiv.prepend(cityHistory);
             }
-
+            // save and update all html inside cityHistoryDiv. Use for ajaxOneStorage function
+            localStorage.setItem("histories", cityHistoryDiv[0].innerHTML);
             // execute second AJAX call, with third nested
             ajaxTwo();
         });
@@ -151,19 +155,19 @@ $(document).ready(function () {
             uvIndex.append(uvColor)
             // color coding uv index 
             var uvNum = parseInt(uv);
-            if ( uvNum <= 3 ) {
+            if (uvNum <= 3) {
                 uvColor.addClass("green");
                 uvColor.removeClass("yellow");
                 uvColor.removeClass("red");
                 uvColor.removeClass("orange");
             }
-            else if ( uvNum <=6 ) {
+            else if (uvNum <= 6) {
                 uvColor.addClass("yellow");
                 uvColor.removeClass("green");
                 uvColor.removeClass("red");
                 uvColor.removeClass("orange");
             }
-            else if ( uvNum <= 9 ) {
+            else if (uvNum <= 9) {
                 uvColor.addClass("orange");
                 uvColor.removeClass("yellow");
                 uvColor.removeClass("green");
@@ -235,12 +239,12 @@ $(document).ready(function () {
     searchButton.on("click", searchCity);
 
     // Event listenr for <p> tag clicks (city search history buttons)
-    cityHistoryDiv.on("click", function (){
+    cityHistoryDiv.on("click", function () {
         // select the event target element and define as variable
         var click = $(event.target);
         // only save the text from a <p> tag click
-        if ( click.is( "p" )) {
-           localStorage.setItem("city", event.target.innerText);
+        if (click.is("p")) {
+            localStorage.setItem("city", event.target.innerText);
         }
         // use storage ajax call, now that <p> click text is set in local storage
         ajaxOneStorage();

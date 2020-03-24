@@ -43,11 +43,9 @@ WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 WHEN I open the weather dashboard
 THEN I am presented with the last searched city forecast
+AND I am also presented with previous search history
 ```
 
 ## Upcoming Features
 
-```
-WHEN I open the dashboard
-THEN I am ALSO presented with the latest search history
-```
+When searching for a city that already exists in the search history,  a new search history button will not render. This will elimate repeated search history buttons.
