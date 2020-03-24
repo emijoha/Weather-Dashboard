@@ -77,9 +77,6 @@ $(document).ready(function () {
             tempDisplay.text("Temperature: " + tempF.toFixed(1) + " \xB0F");
             humidDisplay.text("Humidity: " + humidity + "%");
             windDisplay.text("Wind Speed: " + windMPH + "mph");
-            // get inner HTML of previous cityHistoryDiv
-            var previousHistory = localStorage.getItem("histories");
-            cityHistoryDiv.append(previousHistory);
             // execute ajaxTwo with ajaxThree nested
             ajaxTwo();
         });
@@ -219,6 +216,10 @@ $(document).ready(function () {
     // *FUNCTION* to render last city search at beginning of page refresh
     // won't render anything if local storage is empty
     var renderLastCity = function () {
+        // get inner HTML of previous cityHistoryDiv
+        var previousHistory = localStorage.getItem("histories");
+        cityHistoryDiv.append(previousHistory);
+        // run ajax call for last searched city in local storage
         ajaxOneStorage();
     };
 
